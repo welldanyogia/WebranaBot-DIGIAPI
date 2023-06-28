@@ -12,22 +12,55 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+function verifySignature(secret, signature, payload) {
+  const hmac = crypto.createHmac('sha1', secret);
+  const digest = 'sha1=' + hmac.update(payload).digest('hex');
+  return signature === digest;
+}
+
 app.post('/webhook', (req, res) => {
-  const secret = 'somesecretvalue';
-  const payload = JSON.stringify(req.body);
-  const signature = crypto
-    .createHmac('sha1', secret)
-    .update(payload)
-    .digest('hex');
+  const event = req.headers['x-digiflazz-event'];
+  const signature = req.headers['x-hub-signature'];
 
-  console.log(signature);
-
-  if (req.headers['x-hub-signature'] === `sha1=${signature}`) {
-    console.log(req.body);
+  if (event === 'ping') {
+    // Event ping, webhook berhasil di-setup
+    console.log('Webhook berhasil di-setup');
+    return res.sendStatus(200);
   }
 
-  res.sendStatus(200);
+  // Verifikasi tanda tangan HMAC jika webhook menggunakan secret
+  const secret = 'somesecretvalue';
+  if (secret && !verifySignature(secret, signature, JSON.stringify(req.body))) {
+    console.log('Tanda tangan tidak valid');
+    return res.sendStatus(403);
+  }
+
+  // Proses event transaksi
+  if (event === 'create' || event === 'update') {
+    const payload = req.body.data;
+    // Lakukan pemrosesan data transaksi di sini
+    console.log('Event transaksi:', event);
+    console.log('Payload:', payload);
+
+    // Kirim konten webhook ke WhatsApp menggunakan Twilio
+    // const phoneNumber = 'whatsapp:+1234567890'; // Nomor telepon penerima WhatsApp
+    // const messageContent = JSON.stringify(payload); // Konten webhook yang akan dikirim
+    // sendWhatsAppMessage(phoneNumber, messageContent);
+
+    // Kirim respon sukses
+    return res.json({ status: 'success' });
+  }
+
+  // Event tidak dikenali
+  console.log('Event tidak dikenali');
+  return res.sendStatus(400);
 });
+
+app.get('/webhook', (req, res) => {
+  return res.status(200).json({ message: 'GET request ke /webhook berhasil' });
+});
+
+
 
 
 
@@ -92,7 +125,7 @@ app.get("/del", (req, res) => {
 
 startSock()
 
-const PORT = process.env.PORT || 1232;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
   console.log("WEBRANA Server is Active in Port: " + PORT);
