@@ -41,7 +41,7 @@ const startSock = async (anu) => {
         logger: Pino({ level: "silent" }),
         printQRInTerminal: true,
         shouldIgnoreJid: jid => isJidBroadcast(jid),
-        browser: ['WEBRANA', 'Safari', '9.4.5'],
+        browser: [`${conf.BotName}`, 'Safari', '9.4.5'],
         auth: {
             creds: state.creds,
             /** caching makes the store faster to send/recv messages */
@@ -241,7 +241,7 @@ const startSock = async (anu) => {
                 for (let num of participants) {
                     if (anu.action == 'promote') {
                         await sendTyping(anu.id)
-                        sock.sendMessage(anu.id, { mentions: [num], text: `Webrana telah menjadi Admin Grup` })
+                        sock.sendMessage(anu.id, { mentions: [num], text: `${conf.BotName} telah menjadi Admin Grup` })
                     }
                 }
             } catch (err) {

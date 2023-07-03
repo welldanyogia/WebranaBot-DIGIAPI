@@ -6,6 +6,7 @@ const request = require("request")
 const got = require("got")
 const fs = require('fs')
 const bodyParser = require('body-parser');
+const conf = require('./config/configFile').info
 
 
 const app = express();
@@ -128,5 +129,5 @@ startSock()
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log("WEBRANA Server is Active in Port: " + PORT);
+  console.log(`${conf.BotName} Server is Active in Port: ` + PORT);
 });
