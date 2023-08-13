@@ -3,17 +3,12 @@ exports.info = {
   prefix2: "-",
   owner: {
     name: "Welldan Yogia",
-<<<<<<< HEAD
-    number: ["6285648622105@s.whatsapp.net", "6282131089084@s.whatsapp.net"],
-    numero: ["6285648622105@s.whatsapp.net", "6282131089084@s.whatsapp.net"], //change to your owner number
-=======
-    number: ["6285648622105@s.whatsapp.net"],
-    numero: ["6285648622105@s.whatsapp.net"], //change to your owner number
->>>>>>> f5225416567b831c8de419e5bed5195159ba07ee
+    number: "6285648622105@s.whatsapp.net",
+    numero: "6285648622105@s.whatsapp.net",
   },
   bot: {
     name: "WEBRANA BOT",
-    number: "6285648622105@s.whatsapp.net", //change to your bot number
+    number: "6282131670100@s.whatsapp.net", //change to your bot number
     shortName: "Webrana",
     bigName: "𝕎𝔼𝔹ℝ𝔸ℕ𝔸",
   },
