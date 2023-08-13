@@ -253,7 +253,7 @@ const startSock = async (anu) => {
 
           let Welcomer = `Halo @+${num.split("@")[0]} Selamat Datang di Grup *${
             metadata.subject
-          }*\n\n${text}`;
+          }*\n\nOrang Pintar Membaca Deskripsi Group\n\n${text}`;
           let Bye = `Sayonara @+${num.split("@")[0]}\n\n${text}`;
 
           if (anu.action == "add") {
