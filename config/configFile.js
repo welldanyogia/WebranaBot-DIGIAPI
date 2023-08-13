@@ -3,8 +3,8 @@ exports.info = {
   prefix2: "-",
   owner: {
     name: "Welldan Yogia",
-    number: ["6281252878597@s.whatsapp.net", "6282131089084@s.whatsapp.net"],
-    numero: ["6281252878597@s.whatsapp.net", "6282131089084@s.whatsapp.net"], //change to your owner number
+    number: ["6285648622105@s.whatsapp.net", "6282131089084@s.whatsapp.net"],
+    numero: ["6285648622105@s.whatsapp.net", "6282131089084@s.whatsapp.net"], //change to your owner number
   },
   bot: {
     name: "WEBRANA BOT",

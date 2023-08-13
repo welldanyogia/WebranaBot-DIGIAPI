@@ -210,7 +210,7 @@ const startSock = async (anu) => {
           "VERSION:3.0\n" +
           "FN:Owner \n" + // full name
           "ORG:Blessing Software;\n" + // the organization of the contact
-          "TEL;type=CELL;type=VOICE;waid=6281252878597:+62 812 5287 8597\n" + // WhatsApp ID + phone number
+          "TEL;type=CELL;type=VOICE;waid=6285648622105:+62 856 4862 2105\n" + // WhatsApp ID + phone number
           "END:VCARD";
         const sentMsg = await sock.sendMessage(call.from, {
           contacts: {
